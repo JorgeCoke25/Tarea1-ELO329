@@ -1,0 +1,4 @@
+Para el diseño de este código de ayuda, se modeló "el mundo real" y nos imaginamos situaciones como:
+Para cumplir con las tareas especificadas en el archivo de entrada, una persona (operador) debe revisar las líneas de éste. Una vez que se llegue al tiempo señalado, identifica el tipo de dispositivo domótico, toma aquel asociado al canal y efectúa la operación solicitada. Así opera la parte dinámica de la "simulación".
+En el diseño estático de la etapa 1, se pensó que cada lámpara debe "registrarse" en la nube para estar visible a los controles.
+Los controles deben tener acceso a la nube, así cuando el operador acciona un botón del control, el control pide a la nube ordenar que las lámaras asociadas a un canal específico cambien según el boton presionado.
