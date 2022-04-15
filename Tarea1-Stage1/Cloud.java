@@ -7,11 +7,22 @@ public class Cloud {
     public void addLamp(Lamp l){
         lamps.add(l);
     }
-    public Lamp getLampAtChannel( int channel){
-        //???
+    public ArrayList<Lamp> getLampAtChannel(int channel){
+        ArrayList<Lamp> lampsChannel;
+        lampsChannel = new ArrayList<Lamp>();
+        for (Lamp lamp : lamps) {
+            if (lamp.getChannel()==channel) {
+                lampsChannel.add(lamp);
+            }
+        }
+        return lampsChannel;
     }
     public void changeLampPowerState(int channel){
-        //??
+        for (Lamp lamp : lamps) {
+            if (lamp.getChannel()==channel) {
+                lamp.changePowerState();
+            }
+        }
     }
     public String getHeaders(){
         String header = "";

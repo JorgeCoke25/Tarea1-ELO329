@@ -1,6 +1,10 @@
 public class Lamp {
     public Lamp (int channel){
-        //??
+        this.channel = channel; 
+        this.r=0;
+        this.g=0;
+        this.b=0;
+        this.state=LampState.OFF;
     }
     {
         id=nextId++;
@@ -9,10 +13,15 @@ public class Lamp {
         return channel;
     }
     public void changePowerState(){
-       //???
+        if (state==LampState.OFF) {
+            state=LampState.ON;
+        }
+        else{
+            state=LampState.OFF;
+        }   
     }
     public String getHeader(){
-       //??
+       return ""+id;
     }
     public String toString(){
         if (state==LampState.ON)
