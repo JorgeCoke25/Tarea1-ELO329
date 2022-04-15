@@ -13,6 +13,12 @@ public class Lamp {
         return channel;
     }
     public void changePowerState(){
+        if (state==LampState.OFF && this.r==0 && this.g==0&& this.b==0) {
+            state=LampState.ON;
+            this.r=255;
+            this.g=255;
+            this.b=255;
+        }
         if (state==LampState.OFF) {
             state=LampState.ON;
         }
@@ -21,7 +27,7 @@ public class Lamp {
         }   
     }
     public String getHeader(){
-       return ""+id;
+       return "L"+id+"R\t"+"L"+id+"G\t"+"L"+id+"B\t";
     }
     public String toString(){
         if (state==LampState.ON)

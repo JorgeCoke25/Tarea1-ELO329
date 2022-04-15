@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class Operator {
     public Operator(LampControl lc, Cloud c){
-        //???
+        this.lampControl=lc;
+        this.cloud=c;    
     }
     public void executeCommands(Scanner in, PrintStream out){
         out.println("Time\t" + cloud.getHeaders());
@@ -15,7 +16,13 @@ public class Operator {
                 out.println("Unexpected device:" + string);
                 System.exit(-1);
             }
-            //????
+            int channel = in.nextInt();
+            String op = in.next();
+            if(!op.equals("P")){
+                out.println("Unexpected operation:" + op);
+                System.exit(-1);
+            }
+            cloud.changeLampPowerState(channel);
         }
     }
     private double time=0;

@@ -31,7 +31,11 @@ public class Cloud {
         return header;
     }
     public String getState(){
-        //??
+        String state = "";
+        for (Lamp lamp : lamps) {
+            state+= lamp.toString();
+        }
+        return state;
     }
     private ArrayList<Lamp> lamps; // getting ready for next stages
 }
