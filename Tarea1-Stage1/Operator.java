@@ -1,5 +1,8 @@
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 public class Operator {
     public Operator(LampControl lc, Cloud c){
@@ -9,6 +12,7 @@ public class Operator {
     public void executeCommands(Scanner in, PrintStream out){
         out.println("Time\t" + cloud.getHeaders());
         while(in.hasNextInt()){
+            double time_b=time;
             time=in.nextInt();
             String string=in.next();
             if (!string.equals("L")) {
@@ -22,6 +26,9 @@ public class Operator {
                 System.exit(-1);
             }
             cloud.changeLampPowerState(channel);
+            try {
+                Thread.sleep((int)(time*1000-time_b*1000));
+            } catch (InterruptedException e) {}
             out.println(time+"\t"+cloud.getState());
             in.nextLine();
         }
