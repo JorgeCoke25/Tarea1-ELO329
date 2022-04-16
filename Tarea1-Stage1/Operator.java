@@ -8,7 +8,6 @@ public class Operator {
     }
     public void executeCommands(Scanner in, PrintStream out){
         out.println("Time\t" + cloud.getHeaders());
-        out.println(time+"\t"+cloud.getState());
         while(in.hasNextInt()){
             time=in.nextInt();
             String string=in.next();
@@ -23,6 +22,8 @@ public class Operator {
                 System.exit(-1);
             }
             cloud.changeLampPowerState(channel);
+            out.println(time+"\t"+cloud.getState());
+            in.nextLine();
         }
     }
     private double time=0;
