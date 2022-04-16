@@ -1,8 +1,5 @@
 import java.io.PrintStream;
 import java.util.Scanner;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
 
 public class Operator {
     public Operator(LampControl lc, Cloud c){
