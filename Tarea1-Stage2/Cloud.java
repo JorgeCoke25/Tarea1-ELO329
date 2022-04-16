@@ -3,9 +3,31 @@ import java.util.ArrayList;
 public class Cloud {
     public Cloud() {
         lamps = new ArrayList<Lamp>();
+        rollerShades = new ArrayList<DomoticDevice>();
     }
     public void addLamp(Lamp l){
         lamps.add(l);
+    }
+    public void addRollerShade(RollerShade rs){
+        rollerShades.add(rs);
+    }
+    public void advanceTime(double delta){
+        for (DomoticDevice dd: rollerShades) {
+            RollerShade rs =(RollerShade)dd;
+            rs.advanceTime(delta);
+        }
+    }
+    private DomoticDevice getDomoticDeviceAtChannel( ArrayList<DomoticDevice> devices, int channel){
+        // ???
+    }
+    public void startShadeUp(int channel){
+        // ???
+    }
+    public void startShadeDown(int channel){
+        // ???
+    }
+    public void stopShade(int channel){
+        // ???
     }
     public ArrayList<Lamp> getLampAtChannel(int channel){
         ArrayList<Lamp> lampsChannel;
@@ -38,4 +60,5 @@ public class Cloud {
         return state;
     }
     private ArrayList<Lamp> lamps; // getting ready for next stages
+    private ArrayList<DomoticDevice> rollerShades;
 }
