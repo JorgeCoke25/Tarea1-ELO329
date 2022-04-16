@@ -2,35 +2,41 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Operator {
-    public Operator(LampControl lc, Cloud c){
-        this.lampControl=lc;
-        this.cloud=c;    
+    public Operator(Cloud c){
+        // ???
+    }
+    public void addShadeControl(ShadeControl sc){
+        // ???
     }
     public void executeCommands(Scanner in, PrintStream out){
         out.println("Time\t" + cloud.getHeaders());
         while(in.hasNextInt()){
-            double time_b=time;
-            time=in.nextInt();
-            String string=in.next();
-            if (!string.equals("L")) {
-                out.println("Unexpected device:" + string);
+            int commandTime=in.nextInt();
+            while (time < commandTime) {
+                out.println(time+"\t"+cloud.getState());
+                cloud.advanceTime(delta);
+                time+=delta;
+            }
+            String device=in.next();
+            if (!device.equals("C")) {
+                out.println("Unexpected device:" + device);
                 System.exit(-1);
             }
             int channel = in.nextInt();
-            String op = in.next();
-            if(!op.equals("P")){
-                out.println("Unexpected operation:" + op);
-                System.exit(-1);
+            String command=in.next();
+            if (channel == rsControl.getChannel()) {
+                switch (command.charAt(0)) {
+                    case 'D': //??
+                    // ??
+                    default: out.println("Unexpected command:" + command);
+                        System.exit(-1);
+                }
             }
-            cloud.changeLampPowerState(channel);
-            try {
-                Thread.sleep((int)(time*1000-time_b*1000));
-            } catch (InterruptedException e) {}
-            out.println(time+"\t"+cloud.getState());
-            in.nextLine();
         }
+        out.println(time+"\t"+cloud.getState());
     }
     private double time=0;
-    private LampControl lampControl;
+    private ShadeControl rsControl;
     private Cloud cloud;
+    private final double delta=0.1;
 }
