@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Operator {
     public Operator(Cloud c){
-        // ???
+        this.cloud=c;
     }
     public void addShadeControl(ShadeControl sc){
         // ???
