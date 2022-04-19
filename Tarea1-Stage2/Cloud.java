@@ -18,16 +18,24 @@ public class Cloud {
         }
     }
     private DomoticDevice getDomoticDeviceAtChannel( ArrayList<DomoticDevice> devices, int channel){
-        // ???
+        for (DomoticDevice domoticDevice : devices) {
+            if (domoticDevice.getChannel()==channel){
+                return domoticDevice;
+            }
+        }
+        return null;
     }
     public void startShadeUp(int channel){
-        // ???
+        RollerShade rs=(RollerShade)getDomoticDeviceAtChannel(rollerShades, channel);
+        rs.startUp();
     }
     public void startShadeDown(int channel){
-        // ???
+        RollerShade rs=(RollerShade)getDomoticDeviceAtChannel(rollerShades, channel);
+        rs.startUp();
     }
     public void stopShade(int channel){
-        // ???
+        RollerShade rs=(RollerShade)getDomoticDeviceAtChannel(rollerShades, channel);
+        rs.startUp();
     }
     public ArrayList<Lamp> getLampAtChannel(int channel){
         ArrayList<Lamp> lampsChannel;

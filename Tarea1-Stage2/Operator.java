@@ -2,7 +2,8 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Operator {
-    public Operator(Cloud c){
+    public Operator(ShadeControl rs,Cloud c){
+        this.rsControl=rs;
         this.cloud=c;
     }
     public void addShadeControl(ShadeControl sc){
