@@ -29,7 +29,8 @@ public class Stage2 {
         channel = in.nextInt();
         ShadeControl shadeControl = new ShadeControl(channel, cloud);
         in.nextInt(); // skipping creation of lamp's control at <canal0>
-        Operator operator = new Operator(shadeControl, cloud);
+        Operator operator = new Operator(cloud);
+        operator.addShadeControl(shadeControl);
         operator.executeCommands(in, System.out);
     }
 }

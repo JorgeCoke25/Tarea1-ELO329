@@ -2,12 +2,11 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Operator {
-    public Operator(ShadeControl rs,Cloud c){
-        this.rsControl=rs;
+    public Operator(Cloud c){
         this.cloud=c;
     }
     public void addShadeControl(ShadeControl sc){
-        // ???
+        rsControl=sc;
     }
     public void executeCommands(Scanner in, PrintStream out){
         out.println("Time\t" + cloud.getHeaders());
@@ -27,8 +26,15 @@ public class Operator {
             String command=in.next();
             if (channel == rsControl.getChannel()) {
                 switch (command.charAt(0)) {
-                    case 'D': //??
-                    // ??
+                    case 'D': 
+                        rsControl.startDown(); 
+                        break;
+                    case 'U': 
+                        rsControl.startUp();
+                        break;
+                    case 'S': 
+                        rsControl.stop();
+                        break;
                     default: out.println("Unexpected command:" + command);
                         System.exit(-1);
                 }
