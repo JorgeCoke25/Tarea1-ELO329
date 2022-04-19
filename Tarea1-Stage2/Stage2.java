@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Stage2 {
     public static void main(String [] args) throws IOException {
         if (args.length != 1) {
-            System.out.println("Usage: java Stage1 <configurationFile.txt>");
+            System.out.println("Usage: java Stage2 <configurationFile.txt>");
             System.exit(-1);
         }
         Scanner in = new Scanner(new File(args[0]));
