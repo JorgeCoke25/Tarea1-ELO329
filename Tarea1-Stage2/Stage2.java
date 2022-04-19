@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Stage2 {
@@ -9,6 +10,7 @@ public class Stage2 {
             System.exit(-1);
         }
         Scanner in = new Scanner(new File(args[0]));
+        in.useLocale(Locale.US);
         //System.out.println("File: " + args[0]);
         Cloud cloud = new Cloud();
         // reading <#_de_cortinas> <#_de_lámparas> <#_controles_cortinas> <#_controles_lámparas>
