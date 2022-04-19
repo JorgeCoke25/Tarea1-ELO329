@@ -57,7 +57,7 @@ public class Cloud {
     public String getHeaders(){
         String header = "";
         for (DomoticDevice rs : rollerShades) {
-            header += rs.toString();
+            header += rs.getHeader();
         }
         for (Lamp l: lamps)
             header += l.getHeader();
