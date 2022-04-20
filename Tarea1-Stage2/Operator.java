@@ -8,6 +8,9 @@ public class Operator {
     public void addShadeControl(ShadeControl sc){
         rsControl=sc;
     }
+    public void addLampControl(LampControl lc){
+        lControl=lc;
+    }
     public void executeCommands(Scanner in, PrintStream out){
         out.println("Time\t" + cloud.getHeaders());
         while(in.hasNextInt()){
@@ -46,6 +49,7 @@ public class Operator {
     }
     private double time=0;
     private ShadeControl rsControl;
+    private LampControl lControl;
     private Cloud cloud;
     private final double delta=0.1;
 }
