@@ -54,6 +54,48 @@ public class Cloud {
             }
         }
     }
+    public void turnRedUp(int channel){
+        for (Lamp lamp : lamps) {
+            if (lamp.getChannel()==channel) {
+                lamp.RedUp();
+            }
+        }
+    }
+    public void turnGreenUp(int channel){
+        for (Lamp lamp : lamps) {
+            if (lamp.getChannel()==channel) {
+                lamp.GrenUp();
+            }
+        }
+    }
+    public void turnBlueUp(int channel){
+        for (Lamp lamp : lamps) {
+            if (lamp.getChannel()==channel) {
+                lamp.BlueUp();
+            }
+        }
+    }
+    public void turnRedDown(int channel){
+        for (Lamp lamp : lamps) {
+            if (lamp.getChannel()==channel) {
+                lamp.RedDown();
+            }
+        }
+    }
+    public void turnGreenDown(int channel){
+        for (Lamp lamp : lamps) {
+            if (lamp.getChannel()==channel) {
+                lamp.GrenDown();
+            }
+        }
+    }
+    public void turnBlueDown(int channel){
+        for (Lamp lamp : lamps) {
+            if (lamp.getChannel()==channel) {
+                lamp.BlueDown();
+            }
+        }
+    }
     public String getHeaders(){
         String header = "";
         for (DomoticDevice rs : rollerShades) {
