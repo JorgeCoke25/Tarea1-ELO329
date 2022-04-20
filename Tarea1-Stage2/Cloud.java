@@ -31,11 +31,11 @@ public class Cloud {
     }
     public void startShadeDown(int channel){
         RollerShade rs=(RollerShade)getDomoticDeviceAtChannel(rollerShades, channel);
-        rs.startUp();
+        rs.startDown();
     }
     public void stopShade(int channel){
         RollerShade rs=(RollerShade)getDomoticDeviceAtChannel(rollerShades, channel);
-        rs.startUp();
+        rs.stop();
     }
     public ArrayList<Lamp> getLampAtChannel(int channel){
         ArrayList<Lamp> lampsChannel;

@@ -12,11 +12,14 @@ public class Operator {
         out.println("Time\t" + cloud.getHeaders());
         while(in.hasNextInt()){
             int commandTime=in.nextInt();
-            while (time < commandTime) {
-                out.println(time+"\t"+cloud.getState());
+            while (time <= commandTime) {
                 cloud.advanceTime(delta);
-                time+=delta;
-            }
+                if (time==commandTime) {
+                    out.println(Math.round(time)+"\t"+cloud.getState()+"%");   
+                }
+                time+= delta;
+                time= Math.round(time*10.0)/10.0;
+            } 
             String device=in.next();
             if (!device.equals("C")) {
                 out.println("Unexpected device:" + device);
@@ -40,7 +43,6 @@ public class Operator {
                 }
             }
         }
-        out.println(time+"\t"+cloud.getState());
     }
     private double time=0;
     private ShadeControl rsControl;

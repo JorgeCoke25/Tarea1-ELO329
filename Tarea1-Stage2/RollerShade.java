@@ -2,7 +2,7 @@ public class RollerShade extends DomoticDevice {
     public RollerShade(int channel, double alpha, double length){
         super(nextId, channel);
         motor = new Motor(alpha);
-        this.length=length;
+        this.length=0;
         this.MaxShadeLength=length;
     }
     public void startUp(){
@@ -22,7 +22,8 @@ public class RollerShade extends DomoticDevice {
         return s;
     }
     public String toString(){
-        String s = String.valueOf(Math.round(length/MaxShadeLength*100));
+        String s = String.valueOf(Math.round((length/MaxShadeLength*100)*10.0)/10.0);
+
         return s;
     }
     private class Motor {  //nested class, Motor is only used within RollerShade.
@@ -51,13 +52,15 @@ public class RollerShade extends DomoticDevice {
                 case DOWNWARD:
                     if((length+increment)<=MaxShadeLength){
                         length+=increment;
+                        length= Math.round(length*100.0)/100.0;
+                        break;
                     }
-                    break;
                 case UPWARD:
                     if((length-increment)>=0){
                         length-=increment;
+                        length= Math.round(length*100.0)/100.0;
+                        break;
                     }
-                    break;
             }
         }
         private double alpha;
