@@ -5,6 +5,9 @@ public class RollerShade extends DomoticDevice {
         this.length=0;
         this.MaxShadeLength=length;
     }
+    {
+        nextId=(super.getId())+1;
+    }
     public void startUp(){
         motor.turnUp();
     }
@@ -18,7 +21,7 @@ public class RollerShade extends DomoticDevice {
         motor.advanceTime(delta);
     }
     public String getHeader(){
-        String s = "RS" + getId();
+        String s = "RS" + getId()+"\t";
         return s;
     }
     public String toString(){

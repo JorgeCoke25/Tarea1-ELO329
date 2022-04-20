@@ -34,18 +34,21 @@ public class Stage3 {
             int channel = in.nextInt();
             Lamp lamp = new Lamp(channel);
             cloud.addLamp(lamp);
+            contador_l+=1;
         }
         int contador_crs=0;
         while (contador_crs<numShadeControls) {
             int channel = in.nextInt();
             ShadeControl shadeControl = new ShadeControl(channel, cloud);
             operator.addShadeControl(shadeControl);
+            contador_crs+=1;
         }
         int contador_cl=0;
         while (contador_cl<numLampsControl) {
             int channel = in.nextInt();
             LampControl lampControl = new LampControl(channel, cloud);
             operator.addLampControl(lampControl);
+            contador_cl+=1;
         }
         operator.executeCommands(in, System.out);
     }
