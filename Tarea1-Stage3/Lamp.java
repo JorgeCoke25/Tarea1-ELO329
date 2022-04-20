@@ -93,10 +93,12 @@ public class Lamp {
        return "L"+id+"R\t"+"L"+id+"G\t"+"L"+id+"B\t";
     }
     public String toString(){
-        if (state==LampState.ON)
-            return ""+r+"\t"+g+"\t"+b;
-        else
-            return "0\t0\t0";
+        if (state==LampState.ON){
+            return ""+r+"\t"+g+"\t"+b+"\t";
+        }
+        else{
+            return "0\t0\t0\t";
+        }
     }
     private int channel;
     private short r,g,b;

@@ -7,13 +7,22 @@ public class LampControl {
         cloud.changeLampPowerState(channel);
     }
     public void switchRedUp(){
-        cloud.changeLampPowerState(channel);
+        cloud.turnRedUp(channel);
     }
     public void switchGreenUp(){
-        cloud.changeLampPowerState(channel);
+        cloud.turnGreenUp(channel);
     }
     public void switchBlueUp(){
-        cloud.changeLampPowerState(channel);
+        cloud.turnBlueUp(channel);
+    }
+    public void switchRedDown(){
+        cloud.turnRedDown(channel);
+    }
+    public void switchGreenDown(){
+        cloud.turnGreenDown(channel);
+    }
+    public void switchBlueDown(){
+        cloud.turnBlueDown(channel);
     }
     public int getChannel(){
         return this.channel;

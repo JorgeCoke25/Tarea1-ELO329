@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Cloud {
@@ -17,25 +18,42 @@ public class Cloud {
             rs.advanceTime(delta);
         }
     }
-    private DomoticDevice getDomoticDeviceAtChannel( ArrayList<DomoticDevice> devices, int channel){
+    private ArrayList<DomoticDevice> getDomoticDeviceAtChannel( ArrayList<DomoticDevice> devices, int channel){
+        ArrayList<DomoticDevice> domoticDevicesChannel;
+        domoticDevicesChannel = new ArrayList<DomoticDevice>();
         for (DomoticDevice domoticDevice : devices) {
             if (domoticDevice.getChannel()==channel){
-                return domoticDevice;
+                domoticDevicesChannel.add(domoticDevice);
             }
         }
-        return null;
+        return domoticDevicesChannel;
     }
     public void startShadeUp(int channel){
-        RollerShade rs=(RollerShade)getDomoticDeviceAtChannel(rollerShades, channel);
-        rs.startUp();
+        ArrayList<DomoticDevice> domoticDevices;
+        domoticDevices = new ArrayList<DomoticDevice>();
+        domoticDevices = getDomoticDeviceAtChannel(rollerShades, channel);
+        for (DomoticDevice dd : domoticDevices) {
+            RollerShade rs=(RollerShade)dd;
+            rs.startUp();
+        }
     }
     public void startShadeDown(int channel){
-        RollerShade rs=(RollerShade)getDomoticDeviceAtChannel(rollerShades, channel);
-        rs.startDown();
+        ArrayList<DomoticDevice> domoticDevices;
+        domoticDevices = new ArrayList<DomoticDevice>();
+        domoticDevices = getDomoticDeviceAtChannel(rollerShades, channel);
+        for (DomoticDevice dd : domoticDevices) {
+            RollerShade rs=(RollerShade)dd;
+            rs.startDown();
+        }
     }
     public void stopShade(int channel){
-        RollerShade rs=(RollerShade)getDomoticDeviceAtChannel(rollerShades, channel);
-        rs.stop();
+        ArrayList<DomoticDevice> domoticDevices;
+        domoticDevices = new ArrayList<DomoticDevice>();
+        domoticDevices = getDomoticDeviceAtChannel(rollerShades, channel);
+        for (DomoticDevice dd : domoticDevices) {
+            RollerShade rs=(RollerShade)dd;
+            rs.stop();
+        }
     }
     public ArrayList<Lamp> getLampAtChannel(int channel){
         ArrayList<Lamp> lampsChannel;

@@ -4,15 +4,17 @@
 1   
 0   
 0	C	1	D
-1	L	0	B   U
+1	L	0	P
 2	C	1	S
 3	L	0	G   U      
 4	C	1	D
 5	L	0	R   U
 6	C	1	U
-7	L	0	B   D
+7	L	0	B   U
 8	C	1	D
 10	L	0	G   D
 12	C	1	U
 14	C	1	D
 15	C	1	S
+16	L	0	P
+17	L	0	P

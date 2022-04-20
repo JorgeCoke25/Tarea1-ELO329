@@ -13,16 +13,8 @@ public class Operator {
     }
     public void executeCommands(Scanner in, PrintStream out){
         out.println("Time\t" + cloud.getHeaders());
-        while(in.hasNextLine()){
+        while(in.hasNextInt()){
             int commandTime=in.nextInt();
-            while (time <= commandTime) {
-                cloud.advanceTime(delta);
-                if (time==commandTime) {
-                    out.println(Math.round(time)+"\t"+cloud.getState()+"%");   
-                }
-                time+= delta;
-                time= Math.round(time*10.0)/10.0;
-            } 
             String device=in.next();
             switch (device) {
                 case "C":
@@ -56,10 +48,10 @@ public class Operator {
                                 String R=in.next();
                                 switch (R.charAt(0)) {
                                     case 'U':
-                                        
+                                        cloud.turnRedUp(ch);
                                         break;
                                     case 'D':
-
+                                        cloud.turnRedDown(ch);
                                         break;
                                     default:
                                         out.println("Unexpected command:" + R);
@@ -71,10 +63,10 @@ public class Operator {
                                 String G=in.next();
                                 switch (G.charAt(0)) {
                                     case 'U':
-                                        
+                                        cloud.turnGreenUp(ch);
                                         break;
                                     case 'D':
-                                    
+                                        cloud.turnGreenDown(ch);
                                         break;
                                     default:
                                         out.println("Unexpected command:" + G);
@@ -86,10 +78,10 @@ public class Operator {
                                 String B=in.next();
                                 switch (B.charAt(0)) {
                                     case 'U':
-                                        
+                                        cloud.turnBlueUp(ch);
                                         break;
                                     case 'D':
-                                    
+                                        cloud.turnBlueDown(ch);
                                         break;
                                     default:
                                         out.println("Unexpected command:" + B);
@@ -109,7 +101,14 @@ public class Operator {
                     System.exit(-1);
                     break;
             }
-
+            while (time <= commandTime) {
+                cloud.advanceTime(delta);
+                if (time==commandTime) {
+                    out.println(Math.round(time)+"\t"+cloud.getState());   
+                }
+                time+= delta;
+                time= Math.round(time*10.0)/10.0;
+            } 
         }
     }
     private double time=0;

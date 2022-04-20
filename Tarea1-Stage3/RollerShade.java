@@ -25,7 +25,7 @@ public class RollerShade extends DomoticDevice {
         return s;
     }
     public String toString(){
-        String s = String.valueOf(Math.round((length/MaxShadeLength*100)*10.0)/10.0);
+        String s = String.valueOf(Math.round((length/MaxShadeLength*100)*10.0)/10.0)+"%";
         return s +"\t";
     }
     private class Motor {  //nested class, Motor is only used within RollerShade.
