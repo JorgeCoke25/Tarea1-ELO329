@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +17,10 @@ public class Operator {
     public void addLampControl(LampControl lc){
         lControl.add(lc);
     }
-    public void executeCommands(Scanner in, PrintStream out){
+    public void executeCommands(Scanner in, PrintStream out) throws FileNotFoundException{
+        File salida = new File("salida.csv");
+        PrintWriter printWriter = new PrintWriter(salida);
+        printWriter.println("Time\t" + cloud.getHeaders());
         out.println("Time\t" + cloud.getHeaders());
         while(in.hasNextInt()){
             int commandTime=in.nextInt();
@@ -111,12 +117,14 @@ public class Operator {
             while (time <= commandTime) {
                 cloud.advanceTime(delta);
                 if (time==commandTime) {
+                    printWriter.println(Math.round(time)+"\t"+cloud.getState());
                     out.println(Math.round(time)+"\t"+cloud.getState());   
                 }
                 time+= delta;
                 time= Math.round(time*10.0)/10.0;
             } 
         }
+        printWriter.close();
     }
     private double time=0;
     private ArrayList<ShadeControl> rsControl;
