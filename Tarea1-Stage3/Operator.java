@@ -23,6 +23,7 @@ public class Operator {
         printWriter.println("Time\t" + cloud.getHeaders());
         out.println("Time\t" + cloud.getHeaders());
         while(in.hasNextInt()){
+            double time_b=time;
             int commandTime=in.nextInt();
             String device=in.next();
             switch (device) {
@@ -117,6 +118,9 @@ public class Operator {
             while (time <= commandTime) {
                 cloud.advanceTime(delta);
                 if (time==commandTime) {
+                    try {
+                        Thread.sleep((int)(time*1000-time_b*1000));
+                    } catch (InterruptedException e) {}
                     printWriter.println(Math.round(time)+"\t"+cloud.getState());
                     out.println(Math.round(time)+"\t"+cloud.getState());   
                 }

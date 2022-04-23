@@ -1,7 +1,11 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Stage3 {
     public static void main(String [] args) throws IOException {
@@ -36,19 +40,42 @@ public class Stage3 {
             cloud.addLamp(lamp);
             contador_l+=1;
         }
+        //
         int contador_crs=0;
-        while (contador_crs<numShadeControls) {
+        List<Integer> list_rs = new ArrayList<Integer>();
+        while (contador_crs<numRollerShades) {
             int channel = in.nextInt();
-            ShadeControl shadeControl = new ShadeControl(channel, cloud);
-            operator.addShadeControl(shadeControl);
+            list_rs.add(channel);
             contador_crs+=1;
         }
+        list_rs = list_rs.stream().distinct().collect(Collectors.toList());
+
+        
+        if (list_rs.size()>numShadeControls) {
+            System.out.println("El canal de los controles es incorrecto");
+            System.exit(-1);
+        }
+        for (Integer ch : list_rs) {
+            ShadeControl sc = new ShadeControl(ch, cloud);
+            operator.addShadeControl(sc);
+        }
+        //
         int contador_cl=0;
-        while (contador_cl<numLampsControl) {
+        List<Integer> list_lamps = new ArrayList<Integer>();
+        while (contador_cl<numLamps) {
             int channel = in.nextInt();
-            LampControl lampControl = new LampControl(channel, cloud);
-            operator.addLampControl(lampControl);
+            list_lamps.add(channel);
             contador_cl+=1;
+        }
+        list_lamps = list_lamps.stream().distinct().collect(Collectors.toList());
+
+        if (list_lamps.size()>numLampsControl) {
+            System.out.println("El canal de los controles es incorrecto");
+            System.exit(-1);
+        }
+        for (Integer ch : list_lamps) {
+            LampControl lc = new LampControl(ch, cloud);
+            operator.addLampControl(lc);
         }
         operator.executeCommands(in, System.out);
     }
