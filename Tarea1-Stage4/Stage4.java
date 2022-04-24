@@ -7,10 +7,10 @@ import java.util.Scanner;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class Stage3 {
+public class Stage4 {
     public static void main(String [] args) throws IOException {
         if (args.length != 1) {
-            System.out.println("Usage: java Stage3 <configurationFile.txt>");
+            System.out.println("Usage: java Stage4 <configurationFile.txt>");
             System.exit(-1);
         }
         Scanner in = new Scanner(new File(args[0]));

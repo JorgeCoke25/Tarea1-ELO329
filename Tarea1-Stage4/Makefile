@@ -10,7 +10,7 @@ FILE = "configuration.txt"
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-	Stage3.java \
+	Stage4.java \
 	Cloud.java \
 	DomoticDevice.java \
 	DomoticDeviceControl.java \
@@ -21,7 +21,7 @@ CLASSES = \
 	RollerShade.java \
 	ShadeControl.java 
 
-MAIN = Stage3
+MAIN = Stage4
 
 default: classes
 
