@@ -28,7 +28,7 @@ default: classes
 classes: $(CLASSES:.java=.class)
 
 run: $(MAIN).class
-		$(JVM) $(MAIN) $(FILE) 
+		$(JVM) $(MAIN) $(FILE) > salida.csv
 
 clean:
 	$(RM) *.class
