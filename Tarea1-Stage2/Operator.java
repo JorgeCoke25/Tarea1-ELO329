@@ -15,7 +15,7 @@ public class Operator {
             while (time <= commandTime) {
                 cloud.advanceTime(delta);
                 if (time==commandTime) {
-                    out.println(Math.round(time)+"\t"+cloud.getState()+"%");   
+                    out.println(Math.round(time)+"\t"+cloud.getState());   
                 }
                 time+= delta;
                 time= Math.round(time*10.0)/10.0;
