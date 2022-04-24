@@ -24,7 +24,7 @@ public class Stage2 {
         int channel = in.nextInt();
         RollerShade rollerShade = new RollerShade(channel, alpha, maxLength);
         cloud.addRollerShade(rollerShade);
-        System.out.println("next int:"+ in.nextInt()); // skip lamp's channels
+        in.nextInt(); // skip lamp's channels
         // creating just one roller shade's control at <canal0>
         channel = in.nextInt();
         ShadeControl shadeControl = new ShadeControl(channel, cloud);
