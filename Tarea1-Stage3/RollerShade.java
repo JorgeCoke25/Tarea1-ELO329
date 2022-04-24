@@ -5,6 +5,9 @@ public class RollerShade extends DomoticDevice {
         this.length=0;
         this.MaxShadeLength=length;
     }
+    {
+        nextId=(super.getId())+1;
+    }
     public void startUp(){
         motor.turnUp();
     }
@@ -18,13 +21,12 @@ public class RollerShade extends DomoticDevice {
         motor.advanceTime(delta);
     }
     public String getHeader(){
-        String s = "RS" + getId();
+        String s = "RS" + getId()+"\t";
         return s;
     }
     public String toString(){
-        String s = String.valueOf(Math.round((length/MaxShadeLength*100)*10.0)/10.0);
-
-        return s;
+        String s = String.valueOf(Math.round((length/MaxShadeLength*100)*10.0)/10.0)+"%";
+        return s +"\t";
     }
     private class Motor {  //nested class, Motor is only used within RollerShade.
         public Motor (double a){
