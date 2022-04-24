@@ -32,4 +32,3 @@ run: $(MAIN).class
 
 clean:
 	$(RM) *.class
-	$(RM) *.csv

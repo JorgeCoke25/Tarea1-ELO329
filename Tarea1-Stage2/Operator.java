@@ -11,11 +11,15 @@ public class Operator {
     public void executeCommands(Scanner in, PrintStream out){
         out.println("Time\t" + cloud.getHeaders());
         while(in.hasNextInt()){
+            double time_b = time;
             int commandTime=in.nextInt();
             while (time <= commandTime) {
                 cloud.advanceTime(delta);
                 if (time==commandTime) {
-                    out.println(Math.round(time)+"\t"+cloud.getState());   
+                    out.println(Math.round(time)+"\t"+cloud.getState());  
+                    try {
+                        Thread.sleep((int)(time*1000-time_b*1000));
+                    } catch (InterruptedException e) {}
                 }
                 time+= delta;
                 time= Math.round(time*10.0)/10.0;
